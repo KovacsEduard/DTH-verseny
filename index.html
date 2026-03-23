@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi és a MI a mindennapjaimban</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 0;
+  width: 90%;
+  max-width: 800px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #00ffae;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-dot-left {
+  position: absolute;
+  top: 20px;
+  left: 100%;
+  width: 15px;
+  height: 15px;
+  background: #00ffae;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-dot-right {
+  position: absolute;
+  top: 20px;
+  left: 0%;
+  width: 15px;
+  height: 15px;
+  background: #00ffae;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+/* WAVE DIVIDER */
+.wave {
+  line-height: 0;
+}
+</style>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white">
+
+<!-- NAV -->
+<nav class="fixed w-full top-0 z-50 bg-black/30 backdrop-blur-lg flex justify-center gap-8 py-4">
+  <a href="#home" class="text-green-400 font-semibold hover:text-white">Főoldal</a>
+  <a href="#timeline" class="text-green-400 font-semibold hover:text-white">Napom</a>
+  <a href="#future" class="text-green-400 font-semibold hover:text-white">Jövő</a>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="min-h-screen flex items-center justify-center text-center px-6 pt-16">
+  <div class="fade max-w-2xl">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+      Mi és a MI a mindennapjaimban
+    </h1>
+    <p class="opacity-80">
+      Az AI nem a jövő — már most is segít nekem tanulni és programozni.
+    </p>
+    <a href="#timeline">
+      <button class="mt-8 px-6 py-3 bg-green-400 text-black font-bold rounded-xl hover:bg-white">
+        Nézd meg a napom ↓
+      </button>
+    </a>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave">
+<svg viewBox="0 0 1440 100"><path fill="#ffffff10" d="M0,64L80,64C160,64,320,64,480,58.7C640,53,800,43,960,48C1120,53,1280,75,1360,85.3L1440,96V0H0Z"></path></svg>
+</div>
+
+<!-- TIMELINE -->
+<section id="timeline" class="py-24 bg-white/5 backdrop-blur-xl">
+  <h2 class="text-center text-4xl text-green-400 mb-12 fade">Egy napom AI-val</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item left fade">
+      <div class="timeline-dot-left"></div>
+      <p>Ha nap közben kérdésem van, megkérdezem az AI-t.</p>
+    </div>
+
+    <div class="timeline-item right fade">
+      <div class="timeline-dot-right"></div>
+      <p>Programozás közben segít hibákat javítani.</p>
+    </div>
+
+    <div class="timeline-item left fade">
+      <div class="timeline-dot-left"></div>
+      <p>Házi feladatokban is segít megérteni a dolgokat.</p>
+    </div>
+
+    <div class="timeline-item right fade">
+      <div class="timeline-dot-right"></div>
+      <p>Néha viszont hibázik és rossz választ ad.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="wave">
+<svg viewBox="0 0 1440 100"><path fill="#ffffff10" d="M0,32L80,48C160,64,320,96,480,96C640,96,800,64,960,48C1120,32,1280,32,1360,32L1440,32V100H0Z"></path></svg>
+</div>
+
+<!-- FUTURE -->
+<section id="future" class="py-32">
+  <div class="fade max-w-2xl mx-auto text-center">
+    <h2 class="text-4xl text-green-400 mb-6">Mit gondolok az AI-ról?</h2>
+    <p>
+      Szerintem az AI inkább segít, mint helyettesít.
+      Aki jól ért a munkájához, azt nem váltja le.
+      A jövőben valószínűleg mindenhol jelen lesz.
+    </p>
+  </div>
+</section>
+
+<script>
+const elements = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+  elements.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
